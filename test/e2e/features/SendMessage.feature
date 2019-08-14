@@ -1,14 +1,16 @@
-Feature: Sending message to customer service
+# language: pt
 
-    Scenario: Show the customer service label
-        Given I'm on the login page
-        And I log in with a default user
-        When I'm on the contact page
-        Then the system shows a customer service label
+Funcionalidade: Enviar mensagens na tela de contato
 
-    Scenario: Attaching a document to the message to the customer
-        Given I'm on the login page
-        And I log in with a default user
-        And I'm on the contact page
-        When I send a message with a document
-        Then the system shows a successful message
+    Cenário: Exibe label de customer service
+        Dado eu estou na página de login
+        E eu faço login com usuário padrão
+        Quando eu estou na tela de contato
+        Então sistema apresenta label costumer service
+
+    Cenário: Attaching a document to the message to the customer
+        Dado eu estou na página de login
+        E eu faço login com usuário padrão
+        E eu estou na tela de contato
+        Quando eu envio uma mensagem com um pdf em anexo
+        Então sistema exibe mensagem de mensagem enviada com sucesso

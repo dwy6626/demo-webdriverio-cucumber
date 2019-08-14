@@ -4,15 +4,15 @@ import { contactPage } from '../pages/Contact.page';
 import * as systemMessages from '../constants/SystemMessages.constant';
 import * as systemLabels from '../constants/SystemLabels.constant';
 
-When(/^I'm on the contact page$/, () => {
+When(/^eu estou na tela de contato$/, () => {
     contactPage.goToContactPage();
 });
 
-Then(/^the system shows a customer service label$/, () => {
+Then(/^sistema apresenta label costumer service$/, () => {
     assert.equal(contactPage.heading.getText(), systemLabels.CUSTOMER_SERVICE);
 });
 
-When(/^I send a message with a document$/, () => {
+When(/^eu envio uma mensagem com um pdf em anexo$/, () => {
     const content = {
         subject: 2,
         message: 'My first test.',
@@ -21,7 +21,7 @@ When(/^I send a message with a document$/, () => {
     contactPage.sendMessage(content);
 });
 
-Then(/^the system shows a successful message$/, () => {
+Then(/^sistema exibe mensagem de mensagem enviada com sucesso$/, () => {
     assert.equal(
         contactPage.successMessage.getText(),
         systemMessages.FEEDBACK_MESSAGE_SENT,

@@ -5,7 +5,7 @@ exports.config = {
     hostname: 'localhost',
     port: 4444,
     path: '/wd/hub',
-    specs: ['./test/e2e/features/*.feature'],
+    specs: ['./test/e2e/features/Carrinho.feature'],
     maxInstances: 1,
     capabilities: [
         {
@@ -56,7 +56,7 @@ exports.config = {
     services: [
         [TimelineService],
         // Uncomment to run tests with Selenium Standalone, if you have JDK installed.
-        // ['selenium-standalone'],
+        ['selenium-standalone'],
     ],
     before() {
         browser.setWindowSize(1920, 1080);

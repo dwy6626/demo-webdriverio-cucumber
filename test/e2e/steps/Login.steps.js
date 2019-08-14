@@ -4,21 +4,21 @@ import { loginPage } from '../pages/Login.page';
 import { context } from '../../data/Context';
 import * as systemMessages from '../constants/SystemMessages.constant';
 
-Given(/^I'm on the login page$/, () => {
+Given(/^eu estou na página de login$/, () => {
     loginPage.open();
 });
 
-When(/^I log in with a default user$/, () => {
+When(/^eu faço login com usuário padrão$/, () => {
     loginPage.login(context.logins.user);
 });
 
-Then(/^show a welcome message on the site$/, () => {
+Then(/^sistema exibe mensagem de bem vindo$/, () => {
     assert.equal(
         loginPage.welcomeMessage.getText(),
         systemMessages.FEEDBACK_USER_LOGGED,
     );
 });
 
-Then(/^show user name '(.+)' on the site$/, (userName) => {
+Then(/^sistema exibe nome do usuário '(.+)' no site$/, (userName) => {
     assert.equal(loginPage.userLoggedIn.getText(), userName);
 });
