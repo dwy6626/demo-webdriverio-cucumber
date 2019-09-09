@@ -1,4 +1,4 @@
-const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
+const { TimelineService } = require('wdio-timeline-reporter/timeline-service')
 
 exports.config = {
     runner: 'local',
@@ -60,6 +60,6 @@ exports.config = {
         // ['selenium-standalone'],
     ],
     before() {
-        browser.setWindowSize(1920, 1080);
+        browser.setWindowSize(1920, 1080)
     },
-};
+}

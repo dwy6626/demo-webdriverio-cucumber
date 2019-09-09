@@ -2,6 +2,7 @@ module.exports = {
     rules: {
         'prefer-destructuring': 'warn',
         'class-methods-use-this': 'off',
+        semi: ['error', 'never'],
         'global-require': 'off',
         'func-names': 'off',
         'import/prefer-default-export': 'off',
@@ -23,4 +24,4 @@ module.exports = {
         mocha: true,
     },
     extends: ['airbnb-base', 'prettier'],
-};
+}

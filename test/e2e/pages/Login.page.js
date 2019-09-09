@@ -1,42 +1,42 @@
 class LoginPage {
     open() {
-        browser.url('/');
+        browser.url('/')
     }
 
     get buttonLogin() {
-        return $('.login');
+        return $('.login')
     }
 
     get inputEmail() {
-        return $('body #email');
+        return $('body #email')
     }
 
     get inputPassword() {
-        return $('body #passwd');
+        return $('body #passwd')
     }
 
     get buttonSignIn() {
-        return $('body #SubmitLogin');
+        return $('body #SubmitLogin')
     }
 
     get userLoggedIn() {
-        return $('.account');
+        return $('.account')
     }
 
     get welcomeMessage() {
-        return $('.info-account');
+        return $('.info-account')
     }
 
     login(user) {
         if (this.buttonLogin.isExisting()) {
-            this.buttonLogin.click();
-            this.inputEmail.waitForEnabled();
-            this.inputEmail.setValue(user.login);
-            this.inputPassword.setValue(user.password);
-            this.buttonSignIn.click();
-            this.welcomeMessage.waitForExist();
+            this.buttonLogin.click()
+            this.inputEmail.waitForEnabled()
+            this.inputEmail.setValue(user.login)
+            this.inputPassword.setValue(user.password)
+            this.buttonSignIn.click()
+            this.welcomeMessage.waitForExist()
         }
     }
 }
 
-export const loginPage = new LoginPage();
+export const loginPage = new LoginPage()
