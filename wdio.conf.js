@@ -19,9 +19,9 @@ exports.config = {
     logLevel: 'trace',
     outputDir: './test-report/output',
     bail: 0,
-    baseUrl: 'http://automationpractice.com',
+    baseUrl: 'https://videopass.jp',
     waitforTimeout: 10000,
-    connectionRetryTimeout: 90000,
+    connectionRetryTimeout: 30000,
     connectionRetryCount: 3,
     framework: 'cucumber',
     reporters: [
@@ -57,7 +57,7 @@ exports.config = {
     services: [
         [TimelineService],
         // Uncomment to run tests with Selenium Standalone, if you have JDK installed.
-        // ['selenium-standalone'],
+        ['selenium-standalone'],
     ],
     before() {
         browser.setWindowSize(1920, 1080)

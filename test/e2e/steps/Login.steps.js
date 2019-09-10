@@ -2,7 +2,6 @@ import { assert } from 'chai'
 import { Given, When, Then } from 'cucumber'
 import { loginPage } from '../pages/Login.page'
 import { context } from '../../data/Context'
-import * as systemMessages from '../constants/SystemMessages.constant'
 
 Given(/^I'm on the login page$/, () => {
     loginPage.open()
