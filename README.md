@@ -17,7 +17,7 @@ nvm use 10
 npm install -g yarn
 ```
 
-- Selenium Server: Here's how to set up a server: [Zalenium](https://github.com/zalando/zalenium) or [Selenium HQ](https://github.com/SeleniumHQ/docker-selenium)
+- Selenium Server: Here's how to set up a server: [Selenium HQ](https://github.com/SeleniumHQ/docker-selenium)
 
 Getting Started
 ---------------
@@ -28,17 +28,7 @@ Install the dependencies:
 yarn install
 ```
 
-Start a Selenium Server with Zalenium:
-
- ```bash
-docker-compose up -d zalenium
-```
-
-In wdio.conf.js file configure the host of the Selenium Server `hostname` (default: localhost).  
-
-If you don't want to start a Selenium Server, you can use Selenium Standalone from wdio (if you have JDK installed).  
-So, you should uncomment the line 58 on `wdio.conf.js`.  
-Then the tests run on your machine without a docker selenium.
+In wdio.conf.js file configure the host of the Selenium Server `hostname` (default: `localhost`).  
 
 Run e2e tests:
 
@@ -49,7 +39,7 @@ yarn tests:e2e
 Reports
 ---------------
 
-![alt text](https://github.com/WarleyGabriel/demo-webdriverio-cucumber/blob/master/images/allure-report.png)
+![alt text](./images/allure-report.png)
 
 Run this command to generate the allure report in the directory `./test-report/allure-report`:
 
@@ -63,7 +53,11 @@ You can run this command to start a server on your machine and open the allure r
 yarn report:open
 ```
 
-Also, you can see [Timeline report](https://github.com/QualityOps/wdio-timeline-reporter) in `./test-report/timeline`
+If you want to clear the report folder, use:
+
+```bash
+yarn report:clear
+```
 
 Eslint and Prettier
 ---------------

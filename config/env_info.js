@@ -1,5 +1,6 @@
-export default {
+module.exports = {
     qa: {
+        testurl: "https://videopass.jp",
         accounts: {
             normal: {
                 account: "08059915966", 
