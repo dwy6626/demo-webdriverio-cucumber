@@ -1,7 +1,6 @@
 Demo WebDriverIO with Cucumber
 =================
 
-**Demo WebDriverIO** is a demonstration project of integration tests. In this project the user sends a message to the customer service on [Automation Practice](http://automationpractice.com).  
 These tests are developed in JS with [WebDriverIO](http://webdriver.io/) and [Cucumber](https://cucumber.io/)  
 
 Requirements
