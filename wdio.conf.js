@@ -43,7 +43,7 @@ exports.config = {
         ],
         ['junit', {
             outputDir: './test-report/junit/',
-            outputFileFormat: function(options) { // optional
+            outputFileFormat(options) { // optional
                 return `results-${options.cid}-${options.capabilities.browserName}.xml`
             }
         }],
@@ -72,15 +72,12 @@ exports.config = {
         'selenium-standalone'
     ],
     seleniumLogs : "./test-report/",
-    seleniumInstallArgs: {
-        version : "3.141.5",
-        baseURL : "https://selenium-release.storage.googleapis.com",      
-        chrome: {
-            // check for more recent versions of chrome driver here:
-            // https://chromedriver.storage.googleapis.com/index.html
-            version: '77.0.3865.40',  // use the latest version to support w3c
-            baseURL: 'https://chromedriver.storage.googleapis.com'
-        },
+    seleniumArgs: {
+        drivers: {
+            chrome: {
+                version: '77.0.3865.40',  // to support w3c
+            }
+        }
     },
     // uncomment to accelerate the test starting:
     // skipSeleniumInstall: true,
@@ -94,14 +91,14 @@ exports.config = {
     },
     // hook for cucumber should refer to:
     // https://github.com/webdriverio/webdriverio/blob/master/packages/wdio-cucumber-framework/src/reporter.js
-    beforeFeature: function (uri, feature, scenarios) {
+    beforeFeature (uri, feature, scenarios) {
         console.info(`Feature: ${feature.name} `)
     },
-    beforeScenario: function (uri, feature, scenario, sourceLocation) {
+    beforeScenario (uri, feature, scenario, sourceLocation) {
         console.info(`==== ${scenario.name} ====`)
         browser.url(ENVinfo.testurl)
     },
-    beforeStep: function (uri, feature, scenario, step) {
+    beforeStep (uri, feature, scenario, step) {
         console.info(`LINE: ${step.keyword}>> ${step.text}`)
     },
 }

@@ -10,14 +10,14 @@ Requirements
 - node >= 10.15.x - [how to install Node](https://nodejs.org/en/download/)
 - yarn >= 1.16.x - [how to install Yarn](https://yarnpkg.com/en/docs/install#debian-stable)
 
+For macOS, use following script to get **node** and **yarn**:
+
 ```bash
 brew install nvm
 nvm install 10
 nvm use 10
 npm install -g yarn
 ```
-
-- Selenium Server: Here's how to set up a server: [Selenium HQ](https://github.com/SeleniumHQ/docker-selenium)
 
 Getting Started
 ---------------
@@ -28,7 +28,7 @@ Install the dependencies:
 yarn install
 ```
 
-In wdio.conf.js file configure the host of the Selenium Server `hostname` (default: `localhost`).  
+In `wdio.conf.js` file configure the host of the Selenium Server `hostname` (default: `localhost`).  
 
 Run e2e tests:
 
