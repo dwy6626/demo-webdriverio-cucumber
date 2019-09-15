@@ -1,29 +1,34 @@
-const { TimelineService } = require('wdio-timeline-reporter/timeline-service')
+require('./global.js')
 
+
+// see also: https://webdriver.io/docs/configurationfile.html
 exports.config = {
-    runner: 'local',
-    hostname: 'localhost',
-    port: 4444,
-    path: '/wd/hub',
-    specs: ['./test/e2e/features/*.feature'],
+    // hostname: '127.0.0.1',
+    // port: 9999,
+    specs: ['./lib/features/*.feature'],
+    exclude: ['./lib/features/tmp*.feature'],
     maxInstances: 1,
+    maxInstancesPerCapability: 1,
     capabilities: [
         {
-            maxInstances: 1,
             browserName: 'chrome',
-            'zal:recordVideo': true,
-            'zal:name': 'Demo Integration Tests',
-            'zal:build': 'WebDriverIO',
         },
+        // uncomment to test on these browsers:
+        // {
+        //     browserName: 'safari',
+        // },
+        // {
+        //     browserName: 'firefox',
+        // },
     ],
     logLevel: 'trace',
     outputDir: './test-report/output',
     bail: 0,
-    baseUrl: 'http://automationpractice.com',
     waitforTimeout: 10000,
-    connectionRetryTimeout: 90000,
+    connectionRetryTimeout: 30000,
     connectionRetryCount: 3,
     framework: 'cucumber',
+    specFileRetries: 0,
     reporters: [
         'dot',
         'spec',
@@ -33,13 +38,22 @@ exports.config = {
                 outputDir: './test-report/allure-result/',
                 disableWebdriverStepsReporting: false,
                 disableWebdriverScreenshotsReporting: false,
+                useCucumberStepReporter: true,
             },
         ],
-        ['timeline', { outputDir: './test-report/timeline' }],
+        ['junit', {
+            outputDir: './test-report/junit/',
+            outputFileFormat(options) { // optional
+                return `results-${options.cid}-${options.capabilities.browserName}.xml`
+            }
+        }],
+        ['cucumberjs-json', {
+            jsonFolder: './test-report/js-cucumber/', 
+        }],
     ],
     cucumberOpts: {
         requireModule: ['@babel/register'],
-        require: ['./test/e2e/steps/*.steps.js'],
+        require: ['./lib/steps/*.js'],
         backtrace: false,
         compiler: [],
         dryRun: false,
@@ -55,11 +69,36 @@ exports.config = {
         ignoreUndefinedDefinitions: false,
     },
     services: [
-        [TimelineService],
-        // Uncomment to run tests with Selenium Standalone, if you have JDK installed.
-        // ['selenium-standalone'],
+        'selenium-standalone'
     ],
+    seleniumLogs : "./test-report/",
+    seleniumArgs: {
+        drivers: {
+            chrome: {
+                version: '77.0.3865.40',  // to support w3c
+            }
+        }
+    },
+    // uncomment to accelerate the test starting:
+    // skipSeleniumInstall: true,
+    onPrepare() {
+        console.info('Before test start')
+    },
     before() {
-        browser.setWindowSize(1920, 1080)
+        if (browser.isW3C) {
+            browser.setWindowRect(0, 0, 1280, 700)
+        } else console.warn('not W3C browser!')
+    },
+    // hook for cucumber should refer to:
+    // https://github.com/webdriverio/webdriverio/blob/master/packages/wdio-cucumber-framework/src/reporter.js
+    beforeFeature (uri, feature, scenarios) {
+        console.info(`Feature: ${feature.name} `)
+    },
+    beforeScenario (uri, feature, scenario, sourceLocation) {
+        console.info(`==== ${scenario.name} ====`)
+        browser.url(ENVinfo.testurl)
+    },
+    beforeStep (uri, feature, scenario, step) {
+        console.info(`LINE: ${step.keyword}>> ${step.text}`)
     },
 }
