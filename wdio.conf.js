@@ -1,4 +1,5 @@
 require('./global.js')
+const chromeVersion = '77.0.3865.40'  // to support w3c
 
 
 // see also: https://webdriver.io/docs/configurationfile.html
@@ -68,19 +69,30 @@ exports.config = {
         timeout: 60000,
         ignoreUndefinedDefinitions: false,
     },
+    // ---------------------------------------------------------------
+    // for @wdio/selenium-standalone-service only, not for remote selenium, comment these part for remote testing
+    // (for remote testing, you have to setup selenium server and webdriver manually)
     services: [
         'selenium-standalone'
     ],
     seleniumLogs : "./test-report/",
+    seleniumInstallArgs: {
+        drivers : {
+            chrome : {
+                version : chromeVersion,
+            }
+        }
+    },
     seleniumArgs: {
         drivers: {
             chrome: {
-                version: '77.0.3865.40',  // to support w3c
+                version: chromeVersion
             }
         }
     },
     // uncomment to accelerate the test starting:
     // skipSeleniumInstall: true,
+    // ---------------------------------------------------------------
     onPrepare() {
         console.info('Before test start')
     },
