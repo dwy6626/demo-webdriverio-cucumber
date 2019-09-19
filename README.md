@@ -8,16 +8,38 @@ These tests are developed in JS with [WebDriverIO](http://webdriver.io/) and [Cu
 Requirements
 ---------------
 
+## Node.js
+
 - node >= 10.15.x - [how to install Node](https://nodejs.org/en/download/)
 - yarn >= 1.16.x - [how to install Yarn](https://yarnpkg.com/en/docs/install#debian-stable)
 
-For macOS, use following script to get **node** and **yarn**:
+For macOS, you can install **nvm** via brew, then install **node** via nvm:
 
 ```bash
 brew install nvm
+```
+
+load nvm: (you can also copy and paste to your shell rc file e.g. `.bash_profile`)
+
+```bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
+
+install node.js and yarn:
+
+```bash
 nvm install 10
 nvm use 10
 npm install -g yarn
+```
+
+## Selenium
+
+if you want to run e2e test locally, make sure you have jdk installed:
+
+```bash
+brew cask install java
 ```
 
 Getting Started
