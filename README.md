@@ -23,7 +23,7 @@ load nvm: (you can also copy and paste to your shell rc file e.g. `.bash_profile
 
 ```bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 ```
 
 install node.js and yarn:
